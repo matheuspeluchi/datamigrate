@@ -19,7 +19,7 @@ public class BankDataStepConfig {
       ItemReader<BankData> bankDataReader,
       ItemWriter<BankData> bankDataWriter) {
     return new StepBuilder("bankDataStep", jobRepository)
-        .<BankData, BankData>chunk(1, transactionManager)
+        .<BankData, BankData>chunk(10000, transactionManager)
         .reader(bankDataReader)
         .writer(bankDataWriter)
         .build();
